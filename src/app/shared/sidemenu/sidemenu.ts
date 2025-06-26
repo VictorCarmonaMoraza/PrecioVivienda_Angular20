@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { routes } from '../../app.routes';
 
 @Component({
   selector: 'app-sidemenu',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './sidemenu.css'
 })
 export class Sidemenu {
+
+  public menuItems = routes
+    .map(route => route.children ?? [])
+    .flat()
+    .filter(route => route.path && route.path)
+    .filter(route => !route.path?.includes(':'))
 
 }
