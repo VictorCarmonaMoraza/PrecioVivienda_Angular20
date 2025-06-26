@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './change-detection.html',
   styleUrl: './change-detection.css'
 })
-export class ChangeDetection {
+export default class ChangeDetection {
 
 }

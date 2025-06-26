@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './defer-views.html',
   styleUrl: './defer-views.css'
 })
-export class DeferViews {
+export default class DeferViews {
 
 }
