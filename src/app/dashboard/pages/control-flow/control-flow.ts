@@ -1,5 +1,7 @@
 import { Component, signal } from '@angular/core';
 
+type Grade = 'A' | 'B' | 'F' | 'S';
+
 @Component({
   selector: 'app-control-flow',
   imports: [],
@@ -9,6 +11,7 @@ import { Component, signal } from '@angular/core';
 export default class ControlFlow {
 
   public showContent = signal(false);
+  public grade = signal<Grade>('S');
 
   //Metodo para cambiar el valor de la señala basado en el valor actual
   public toggleContent() {
