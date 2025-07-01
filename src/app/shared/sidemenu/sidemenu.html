@@ -17,9 +17,10 @@
     </a>
   </div>
   <div id="nav" class="w-full px-6">
-    @for(item of menuItems; track $index) {
-    <a [routerLink]="item.path" routerLinkActive="bg-blue-800"
-      [routerLinkActiveOptions]="{ exact: true }" href="#"
+    @let items = menuItems;
+    @if(items.length > 0) {
+    @for(item of items; track $index) {
+    <a [routerLink]="item.path" routerLinkActive="bg-blue-800" [routerLinkActiveOptions]="{ exact: true }" href="#"
       class="w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -35,6 +36,7 @@
       </div>
     </a>
     }
+  }
 
     <!-- <a href="#" class="w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150">
                 <div>
