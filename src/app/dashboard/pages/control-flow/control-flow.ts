@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-control-flow',
@@ -8,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export default class ControlFlow {
 
+  public showContent = signal(false);
+
+  //Metodo para cambiar el valor de la señala basado en el valor actual
+  public toggleContent() {
+    //Opcion 1
+    this.showContent.set(!this.showContent());
+    //Opcion 2
+    // this.showContent.update(value => !value);
+    //Opcion 3
+    // this.showContent.update(value => {
+    //   return !value;
+    // });
+  }
 }
