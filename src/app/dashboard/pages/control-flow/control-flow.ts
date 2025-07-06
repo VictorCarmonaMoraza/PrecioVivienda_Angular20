@@ -12,6 +12,8 @@ export default class ControlFlow {
 
   public showContent = signal(false);
   public grade = signal<Grade>('S');
+  public frameworks = signal(['Angular', 'React', 'Vue', 'Svelte']);
+  public frameworks2 = signal(['react', 'vue', 'svelte', 'angular']);
 
   //Metodo para cambiar el valor de la señala basado en el valor actual
   public toggleContent() {

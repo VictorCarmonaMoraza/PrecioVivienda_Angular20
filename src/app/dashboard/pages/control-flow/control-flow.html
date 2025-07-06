@@ -34,4 +34,38 @@
     }
     }
   </div>
+
+
+
+  <!--@for-->
+  <div class="bg-white rounded shadow p-10">
+
+    @for (framework of frameworks(); track framework; let i = $index,
+    first = $first, last = $last, even = $even, odd = $odd, count= $count) {
+    <ul>
+      <li [class]="{
+        'bg-red-300': even && !first && !last,
+        'bg-green-500': odd && !first && !last,
+        'bg-blue-600': first || last,
+        }">
+        {{i + 1}}/{{count}}- {{framework}}
+      </li>
+    </ul>
+    }
+  </div>
+
+  <div class="bg-amber-800 rounded shadow p-10">
+    @for (framework of frameworks2(); track $index;
+    ) {
+    <ul>
+      <li>
+        {{$index}} - {{framework}}
+      </li>
+    </ul>
+    }@empty {
+    <li>No Hay framework agregados</li>
+    }
+  </div>
+
+
 </section>
