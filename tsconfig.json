@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "src",
     "paths": {
       "@shared/*": [
         "src/app/shared/*"

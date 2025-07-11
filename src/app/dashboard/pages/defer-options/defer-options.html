@@ -1,1 +1,21 @@
-<p>defer-options works!</p>
+<app-title title="Defer Triggers"></app-title>
+
+<section>
+  <h1 class="text-xl">Interacciones</h1>
+  <hr class="my-2" />
+
+  <!--Este componente lo que hace es que mientras no se utilice
+  lo tiene listo pero no lo llama-->
+  @defer (on interaction) {
+  <app-heavy-loaders-fast cssClass="bg-blue-500 h-20">
+    <span>On interaction</span>
+  </app-heavy-loaders-fast>
+  }@placeholder {
+    <!--Hasta que no hagamos click sobre el elemento no se llamara-->
+    <div class="w-full h-20 bg-purple-100">
+      click div
+    </div>
+  }
+
+
+</section>
