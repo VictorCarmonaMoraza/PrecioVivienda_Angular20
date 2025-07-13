@@ -8,7 +8,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), provideClientHydration(withEventReplay()),
     provideRouter(
       routes,
       withViewTransitions({
@@ -17,7 +16,8 @@ export const appConfig: ApplicationConfig = {
           console.log('View transition created:', transitionInfo);
         },
       })
-    )
+    ),
+    provideClientHydration(withEventReplay()),
   ],
 
 };
