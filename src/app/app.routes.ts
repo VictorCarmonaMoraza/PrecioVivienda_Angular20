@@ -11,6 +11,7 @@ export const routes: Routes = [
       { path: 'user/:id', title: 'User', loadComponent: () => import('./dashboard/pages/user/user') },
       { path: 'user-list', title: 'User List', loadComponent: () => import('./dashboard/pages/users/users') },
       { path: 'view-transition', title: 'View Transtion', loadComponent: () => import('./dashboard/pages/view-transition/view-transition') },
+      { path: 'view-transition1', title: 'View Transtion1', loadComponent: () => import('./dashboard/pages/view-transition/view-transition1') },
 
     ]
   },
