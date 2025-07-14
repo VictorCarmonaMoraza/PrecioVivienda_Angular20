@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface UsersResponse {
     page:        number;
     per_page:    number;
     total:       number;
