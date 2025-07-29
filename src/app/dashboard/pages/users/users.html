@@ -17,16 +17,19 @@
 
 <app-title title="Listado de Paises" />
 
-<ul>
-  @for(pais of countries; track pais.name ){
-  <li class="flex items-center my-2 cursor-pointer">
-    <img [srcset]="pais.flags.png" class="rounded w-14">
-    <a [routerLink]="['/dashboard/user',pais.ccn3]" routerLinkActive="router-link-active"
-     class="mx-5 hover:underline">
-      {{pais.name.common}} {{pais.capital}} - {{pais.fifa}}
-    </a>
-  </li>
-  }@empty {
-    <h3>Esperando la data</h3>
+<p *ngIf="loading()">Cargando países...</p>
+
+<ul *ngIf="!loading()">
+  @for (pais of countries(); track pais.name.common) {
+    <li class="flex items-center my-2 cursor-pointer">
+      <img [src]="pais.flags?.png" class="rounded w-14">
+      <a [routerLink]="['/dashboard/user', pais.ccn3]" class="mx-5 hover:underline">
+        {{ pais.name.common }} {{ pais.capital?.[0] ?? '' }} - {{ pais.fifa }}
+      </a>
+    </li>
+  } @empty {
+    <h3>No se encontraron países</h3>
   }
 </ul>
+
+

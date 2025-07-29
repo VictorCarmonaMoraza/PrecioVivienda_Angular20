@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { Countries } from '@services/countries';
@@ -23,9 +23,11 @@ export default class User {
     )
   );
 
-  // constructor() {
-  //   this.route.params.subscribe(params => {
-  //     console.log(params);
-  //   })
-  // }
+    public titleLabel = computed(() => {
+    if (this.countrie()) {
+      return `Informacion del pais: ${this.countrie()?.name.common}`;
+    }
+    return `Informacion del pais`;
+  });
+
 }

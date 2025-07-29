@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Countrie } from '@interface/country.interface';
 import { Countries } from '@services/countries';
@@ -16,15 +16,21 @@ export default class Users {
 
   //public usersService = inject(UsersService);
   readonly countriesService = inject(Countries);
-  countries:Countrie[] = [];
+   countries = signal<Countrie[]>([]);
+  loading = signal(true);
 
-ngOnInit(): void {
+  ngOnInit(): void {
     this.countriesService.getSpainData().subscribe({
       next: (res) => {
-        this.countries = res; // El API devuelve un array de países
+        this.countries.set(res);
+         this.loading.set(false);
       },
-      error: (err) => console.error('Error al obtener países', err)
+      error: (err) => {
+       console.error('Error al obtener países', err);
+        this.loading.set(false);
+      }
     });
   }
+
 
 }
