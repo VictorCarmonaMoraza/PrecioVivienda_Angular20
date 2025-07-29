@@ -1,4 +1,4 @@
-<app-title title="Listado de Usuarios" />
+<!-- <app-title title="Listado de Usuarios" />
 
 <ul>
   @for(user of usersService.users(); track user.id ){
@@ -7,6 +7,23 @@
     <a [routerLink]="['/dashboard/user',user.id]" routerLinkActive="router-link-active"
      class="mx-5 hover:underline">
       {{user.first_name}} {{user.last_name}} - {{user.email}}
+    </a>
+  </li>
+  }@empty {
+    <h3>Esperando la data</h3>
+  }
+</ul> -->
+
+
+<app-title title="Listado de Paises" />
+
+<ul>
+  @for(pais of countries; track pais.name ){
+  <li class="flex items-center my-2 cursor-pointer">
+    <img [srcset]="pais.flags.png" class="rounded w-14">
+    <a [routerLink]="['/dashboard/user',pais.ccn3]" routerLinkActive="router-link-active"
+     class="mx-5 hover:underline">
+      {{pais.name.common}} {{pais.capital}} - {{pais.fifa}}
     </a>
   </li>
   }@empty {

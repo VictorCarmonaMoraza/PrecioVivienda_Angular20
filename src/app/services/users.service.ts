@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { Users, UsersResponse } from '@interface/req-response';
-import { delay } from 'rxjs';
+import type { Users, UsersListResponse } from '@interface/req-response';
+import { UserResponse } from '@interface/user-response';
+import { delay, map } from 'rxjs';
 
 interface State {
   users: Users[];
@@ -20,12 +21,12 @@ export class UsersService {
     users: []
   });
 
-  public users = computed(()=>this.#state().users);
-  public loading = computed(()=>this.#state().loading);
+  public countrie = computed(() => this.#state().users);
+  public loading = computed(() => this.#state().loading);
 
   constructor() {
-    this.http.get<UsersResponse>('https://reqres.in/api/users?page=2')
-    .pipe(delay(15000)) // Simulate a delay for loading state
+    this.http.get<UsersListResponse>('https://reqres.in/api/users?page=2')
+      .pipe(delay(1000)) // Simulate a delay for loading state
       .subscribe({
         next: (response) => {
 
@@ -36,7 +37,14 @@ export class UsersService {
 
         }
       });
+  }
 
+  getUserById(idActual: string) {
+    let id= 2;
+    return this.http.get<UserResponse>(`https://reqres.in/api/users/${id}`)
+      .pipe(delay(1000),
+      map(resp=>resp.data)
 
+      );
   }
 }

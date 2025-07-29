@@ -1,1 +1,23 @@
-<p>user works!</p>
+<!-- <app-title [title]="'User'" />
+
+@if(user()){
+<section>
+  <img [srcset]="user()!.avatar" [alt]="user()!.first_name">
+</section>
+}@else {
+<p>Cragando informacion</p>
+} -->
+
+
+<app-title [title]="'Pais individual'" />
+
+<!-- @let countrie = pais(); -->
+
+@if ((countrie() && countrie()?.name)) {
+  <section>
+    <img [src]="countrie()!.flags.png" [alt]="countrie()!.name.common">
+    <h2>{{ countrie()!.name.common }}</h2>
+  </section>
+} @else {
+  <p>Cargando información...</p>
+}
